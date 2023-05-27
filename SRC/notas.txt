@@ -1,0 +1,70 @@
+useEffect(() => {
+        axios.get<ReqRespListado>('http://192.168.1.111/api/usuarios')
+            .then(response => {
+                var id= response.data.ID;
+                var Nombre =response.data.Nombre;
+                var Correo = response.data.correo;
+                var password = response.data.contrasenna;
+                var data = response.data;
+v 
+                
+                console.log(data);
+
+                rows.push();
+                console.log(rows);
+
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+
+    }, [])
+    --------------------------------------------
+    <View style={styles.container}>
+                <Table borderStyle={{ borderWidth: 2, borderColor: 'white' }}>
+                    <Row
+
+                        data={Headers} style={styles.tabla} height={40}
+                        flexArr={[1, 1, 1, 1]}
+                        textStyle={{
+                            textAlign: 'center',
+                            fontSize: 15,
+                            fontWeight: 'bold',
+                            color: 'white'
+
+                        }}
+                    ></Row>
+                    <TableWrapper>
+                        <Rows
+                            data={rows}
+                            heightArr={[28,28,28,28]}
+                            flexArr={[1, 1, 1, 1]}
+                            textStyle={{
+                                textAlign: 'left'
+                            }}
+                        />
+
+
+                    </TableWrapper>
+                </Table>
+            </View>
+const Headers = ['ID', 'Nombre', 'Correo', 'Contraseña'];
+-------
+useEffect(() => {
+        axios.get('http://192.168.1.111/api/usuarios')
+            .then(response => {
+               
+                var data = response.data;
+                
+                console.log(data);
+
+                rows.push(data);
+                console.log(rows);
+
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
